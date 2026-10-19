@@ -10,7 +10,8 @@ Gratis, tanpa akun, tanpa backend, dan tanpa database.
 - **Buket digambar dengan SVG:** kelopak berlapis, tangkai, kertas pembungkus, dan pita. Bunga baru jatuh masuk ke dalam buket.
 - **Kustomisasi:** 4 pilihan daun, 6 warna pembungkus, dan 4 gaya kartu (elegan, vintage, tengah malam, botani).
 - **Kartu ucapan:** nama penerima, nama pengirim, dan pesan hingga 200 karakter.
-- **Berbagi lewat link:** salin link atau kirim langsung ke WhatsApp.
+- **Konfirmasi sebelum kirim:** tombol "Selesai" menanyakan apakah buket sudah jadi atau masih mau diedit. Kalau sudah, baru muncul pilihan salin link atau kirim ke WhatsApp.
+- **Otomatis kosong setelah dikirim:** begitu pengguna kembali ke tab setelah mengirim, nama, bunga, dan pesan dikosongkan supaya bisa membuat buket baru (tema latar tetap).
 - **Layar amplop untuk penerima:** penerima membuka amplop, lalu bunga tersusun satu per satu disertai confetti.
 - **5 tema latar:** Pink, Taman, Senja, Lavender, dan Malam. Particle yang jatuh ikut berganti sesuai tema.
 - **Panduan bunga dan contoh buket:** arti tiap bunga dan empat contoh siap pakai (minta maaf, cepat sembuh, ulang tahun, terima kasih).
@@ -30,6 +31,7 @@ fleurette/
     ├── effects.js    Navigasi yang bersembunyi, kelopak jatuh, confetti, tombol melayang
     ├── flower.js     Menggambar bunga dan buket dalam SVG
     ├── ui.js         Memperbarui tampilan dan membuat tombol serta kartu
+    ├── flow.js       Konfirmasi buket sudah jadi, pilihan kirim, dan mengosongkan pembuat
     └── main.js       Titik masuk: mode pembuat atau mode penerima
 ```
 
@@ -40,7 +42,7 @@ fleurette/
 
 Tidak perlu instalasi apa pun. Koneksi internet dibutuhkan karena Tailwind CSS dan font dimuat dari CDN.
 
-> **Penting:** urutan `<script>` di `index.html` jangan diubah (`data`, `state`, `effects`, `flower`, `ui`, `main`). File yang di belakang memakai isi file yang di depan.
+> **Penting:** urutan `<script>` di `index.html` jangan diubah (`data`, `state`, `effects`, `flower`, `ui`, `flow`, `main`). File yang di belakang memakai isi file yang di depan.
 
 ## Cara kerja link kiriman
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Fleurette – Make a Flower Bouquet</title>
+<title>Fleurette - Make a Flower Bouquet</title>
 <script src="https://cdn.tailwindcss.com/3.4.17"></script>
 <script>tailwind.config={theme:{extend:{colors:{bg:'var(--bg)',card:'var(--card)',tx:'var(--tx)',mut:'var(--mut)',ac:'var(--ac)',bd:'var(--bd)'}}}}</script>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
@@ -72,11 +72,7 @@
             <textarea id="msg" maxlength="200" rows="3" placeholder="Tulis pesanmu…" class="w-full bg-bg border border-bd rounded-xl px-3 py-2 outline-none focus:border-ac"></textarea>
           </div></div>
         <div class="border-t border-bd pt-4">
-          <div class="grid grid-cols-2 gap-2">
-            <button id="copy" class="border border-ac text-ac rounded-full py-2 font-semibold">🔗 Salin link</button>
-            <a id="wa" target="_blank" rel="noopener" class="bg-ac text-white rounded-full py-2 font-semibold text-center">Kirim WhatsApp</a>
-          </div>
-          <p id="note" class="text-sm text-mut mt-2 text-center min-h-[1.25rem]"></p>
+          <button id="done" class="w-full bg-ac text-white rounded-full py-3 font-semibold shadow-lg">✅ Selesai, lanjut kirim</button>
         </div>
       </div>
     </div>
@@ -94,6 +90,30 @@
     <div id="ex" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
   </section>
 </main>
+<div id="modal" class="hidden fixed inset-0 z-[70] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+  <div class="bg-card border border-bd rounded-3xl p-6 w-full max-w-sm text-center shadow-2xl">
+    <div id="m1">
+      <div class="text-5xl">💐</div>
+      <h3 class="font-semibold text-lg mt-2">Buketmu sudah jadi?</h3>
+      <p id="sum" class="text-sm text-mut mt-2"></p>
+      <div class="grid grid-cols-2 gap-2 mt-5">
+        <button id="edit" class="border border-bd rounded-full py-2 font-semibold">✏️ Masih mau diedit</button>
+        <button id="ok" class="bg-ac text-white rounded-full py-2 font-semibold">✅ Sudah jadi</button>
+      </div>
+    </div>
+    <div id="m2" class="hidden">
+      <div class="text-5xl">💌</div>
+      <h3 class="font-semibold text-lg mt-2">Siap dikirim!</h3>
+      <p class="text-sm text-mut mt-1">Pilih cara mengirim. Setelah itu pembuat buket dikosongkan, jadi kamu bisa mulai buket baru.</p>
+      <div class="grid gap-2 mt-5">
+        <button id="copy" class="border border-ac text-ac rounded-full py-2 font-semibold">🔗 Salin link</button>
+        <a id="wa" target="_blank" rel="noopener" class="bg-ac text-white rounded-full py-2 font-semibold text-center">Kirim WhatsApp</a>
+      </div>
+      <p id="note" class="text-sm text-mut mt-2 min-h-[1.25rem]"></p>
+      <button id="again2" class="mt-2 text-sm text-ac font-semibold">Buat buket baru</button>
+    </div>
+  </div>
+</div>
 <button id="fab" class="hidden lg:hidden fixed right-4 bottom-[calc(1rem+env(safe-area-inset-bottom,0px))] z-40 bg-ac text-white rounded-full px-4 py-3 shadow-lg text-sm font-semibold">💐 Lihat buket</button>
 <footer class="bld relative z-10 text-center text-sm text-mut py-8 border-t border-bd">💐 Fleurette · Gratis dibuat dan dibagikan, satu kelopak setiap kali.</footer>
 
@@ -102,6 +122,7 @@
 <script src="js/effects.js"></script>
 <script src="js/flower.js"></script>
 <script src="js/ui.js"></script>
+<script src="js/flow.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
