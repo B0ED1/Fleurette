@@ -1,10 +1,12 @@
+// Titik masuk: membaca link kiriman (mode penerima) atau menyiapkan pembuat buket.
+
 (function init() {
     petals();
     const m = location.hash.match(/b=([^&]+)/);
     if (m) {
         try {
             const d = JSON.parse(decodeURIComponent(escape(atob(m[1]))));
-            S = { to: String(d.to || '').slice(0, 30), from: String(d.from || '').slice(0, 30), msg: String(d.msg || '').slice(0, 200), wrap: d.wrap || 'p', card: d.card || 'e', gr: d.gr || 'a', bg: BG.some(b => b.id === d.bg) ? d.bg : 'pink', items: d.items || {} };
+            S = { to: String(d.to || '').slice(0, 30), from: String(d.from || '').slice(0, 30), msg: String(d.msg || '').slice(0, 200), wrap: d.wrap || 'p', card: d.card || 'e', gr: d.gr || 'n', bg: BG.some(b => b.id === d.bg) ? d.bg : 'pink', items: d.items || {} };
             document.body.classList.add('view');
             $('again').classList.remove('hidden');
             $('again').href = location.href.split('#')[0];

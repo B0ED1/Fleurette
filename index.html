@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Fleurette - Make a Flower Bouquet</title>
+<title>Make a Flower Bouquet</title>
 <script src="https://cdn.tailwindcss.com/3.4.17"></script>
 <script>tailwind.config={theme:{extend:{colors:{bg:'var(--bg)',card:'var(--card)',tx:'var(--tx)',mut:'var(--mut)',ac:'var(--ac)',bd:'var(--bd)'}}}}</script>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
@@ -27,16 +27,26 @@
 
 <main id="top" class="relative z-10 max-w-5xl mx-auto px-4">
   <section class="bld text-center py-10 sm:py-16">
-    <div class="float text-6xl mb-4">🌷🌹🌻</div>
-    <h1 class="grad script text-5xl sm:text-7xl">Create Your Dream Flower Bouquet</h1>
-    <p class="text-mut mt-4 max-w-xl mx-auto">Mau Beli Buket Bunga Tapi Bingung? Tenang Kamu Bisa Coba Merangkai</p>
+    <div id="heroIkon" class="flex justify-center items-center mb-5"></div>
+    <h1 class="grad script text-5xl sm:text-7xl text-balance">Create Your Dream Flower Bouquet</h1>
+    <p class="text-mut mt-4 max-w-xl mx-auto text-base sm:text-lg text-balance">Mau Beli Buket Bunga Tapi Bingung? Tenang Kamu Bisa Coba Merangkai</p>
     <a href="#buat" class="inline-block mt-7 bg-ac text-white rounded-full px-8 py-3 font-semibold shadow-lg">Mulai Merangkai</a>
+    <p class="mt-5 text-sm text-mut">Gratis · Tanpa akun · Cukup kirim link</p>
   </section>
 
-  <section id="cara" class="bld grid sm:grid-cols-3 gap-4 pb-16">
-    <div class="bg-card/90 border border-bd rounded-3xl p-6 text-center"><div class="text-4xl">🌷</div><h3 class="font-semibold mt-2">Pilih bunga</h3><p class="text-sm text-mut mt-1">Delapan bunga dengan makna berbeda, plus pilihan daun dan pembungkus.</p></div>
-    <div class="bg-card/90 border border-bd rounded-3xl p-6 text-center"><div class="text-4xl">✉️</div><h3 class="font-semibold mt-2">Tulis kartu</h3><p class="text-sm text-mut mt-1">Empat gaya kartu: elegan, vintage, tengah malam, dan botani.</p></div>
-    <div class="bg-card/90 border border-bd rounded-3xl p-6 text-center"><div class="text-4xl">🔗</div><h3 class="font-semibold mt-2">Kirim link</h3><p class="text-sm text-mut mt-1">Bagikan lewat WhatsApp atau aplikasi apa pun. Penerima disambut amplop.</p></div>
+  <section id="cara" class="bld grid sm:grid-cols-3 gap-3 sm:gap-4 pb-12 sm:pb-16 scroll-mt-20">
+    <div class="bg-card/90 border border-bd rounded-3xl p-4 sm:p-6 flex sm:block items-center gap-4 text-left sm:text-center">
+      <div class="w-10 h-10 shrink-0 rounded-full bg-ac text-white font-semibold flex items-center justify-center sm:mx-auto sm:mb-3">1</div>
+      <div><h3 class="font-semibold">Pilih bunga</h3><p class="text-sm text-mut mt-1">Sebelas bunga dengan makna berbeda, plus pilihan daun dan pembungkus.</p></div>
+    </div>
+    <div class="bg-card/90 border border-bd rounded-3xl p-4 sm:p-6 flex sm:block items-center gap-4 text-left sm:text-center">
+      <div class="w-10 h-10 shrink-0 rounded-full bg-ac text-white font-semibold flex items-center justify-center sm:mx-auto sm:mb-3">2</div>
+      <div><h3 class="font-semibold">Tulis kartu</h3><p class="text-sm text-mut mt-1">Empat gaya kartu: elegan, vintage, tengah malam, dan botani.</p></div>
+    </div>
+    <div class="bg-card/90 border border-bd rounded-3xl p-4 sm:p-6 flex sm:block items-center gap-4 text-left sm:text-center">
+      <div class="w-10 h-10 shrink-0 rounded-full bg-ac text-white font-semibold flex items-center justify-center sm:mx-auto sm:mb-3">3</div>
+      <div><h3 class="font-semibold">Kirim link</h3><p class="text-sm text-mut mt-1">Bagikan lewat WhatsApp atau aplikasi apa pun. Penerima disambut amplop.</p></div>
+    </div>
   </section>
 
   <section id="buat" class="py-6 scroll-mt-20">
@@ -61,7 +71,7 @@
       </div>
 
       <div class="bld bg-card/90 backdrop-blur border border-bd rounded-3xl p-4 sm:p-6 space-y-6 shadow-xl shadow-purple-300/30">
-        <div><h3 class="font-semibold mb-3">1. Bunga <span id="cnt" class="text-mut font-normal text-sm"></span></h3><div id="flowers" class="grid sm:grid-cols-2 gap-2"></div></div>
+        <div><h3 class="font-semibold mb-3">1. Bunga <span id="cnt" class="text-mut font-normal text-sm"></span></h3><div id="flowers" class="grid sm:grid-cols-2 lg:grid-cols-1 gap-2"></div></div>
         <div><h3 class="font-semibold mb-3">2. Daun</h3><div id="greens" class="flex gap-2 flex-wrap"></div></div>
         <div><h3 class="font-semibold mb-3">3. Pembungkus</h3><div id="wraps" class="flex flex-wrap gap-3"></div></div>
         <div><h3 class="font-semibold mb-3">4. Gaya kartu</h3><div id="cards" class="flex gap-2 flex-wrap"></div></div>
@@ -115,7 +125,13 @@
   </div>
 </div>
 <button id="fab" class="hidden lg:hidden fixed right-4 bottom-[calc(1rem+env(safe-area-inset-bottom,0px))] z-40 bg-ac text-white rounded-full px-4 py-3 shadow-lg text-sm font-semibold">💐 Lihat buket</button>
-<footer class="bld relative z-10 text-center text-sm text-mut py-8 border-t border-bd">💐 Fleurette · Gratis dibuat dan dibagikan, satu kelopak setiap kali.</footer>
+<footer class="bld relative z-10 border-t border-bd mt-6 py-8 px-4 text-center text-sm text-mut">
+  <p class="grad script text-3xl inline-block">💐 Fleurette</p>
+  <p class="mt-1">Gratis dibuat dan dibagikan, satu kelopak setiap kali.</p>
+  <nav class="flex flex-wrap justify-center gap-x-5 gap-y-1 mt-4">
+    <a href="#cara">Cara kerja</a><a href="#buat">Buat Buket</a><a href="#bunga">Bunga</a><a href="#contoh">Contoh</a><a href="#top">Ke atas ↑</a>
+  </nav>
+</footer>
 
 <script src="js/data.js"></script>
 <script src="js/state.js"></script>

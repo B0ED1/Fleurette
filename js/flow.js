@@ -1,3 +1,5 @@
+// Alur penyelesaian: konfirmasi buket, pilih cara kirim, lalu kosongkan pembuat.
+
 let sudahDikirim = false;
 
 function bukaModal() {
@@ -20,8 +22,9 @@ function tutupModal() {
     $('modal').classList.add('hidden');
 }
 
+// Kosongkan semuanya (nama, pesan, bunga, dll.) kecuali tema latar
 function kosongkan() {
-    S = { bg: S.bg, to: '', from: '', msg: '', wrap: 'p', card: 'e', gr: 'a', items: {} };
+    S = { bg: S.bg, to: '', from: '', msg: '', wrap: 'p', card: 'e', gr: 'n', items: {} };
     sync();
     tutupModal();
     $('buat').scrollIntoView();

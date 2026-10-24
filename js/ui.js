@@ -20,8 +20,14 @@ function draw() {
     $('cmsg').textContent = S.msg;
     $('cfrom').textContent = S.from ? '– ' + S.from : '';
     $('cnt').textContent = '(' + list.length + '/15 tangkai)';
-    FL.forEach(f => { const c = $('n-' + f.id); if (c)
-        c.textContent = S.items[f.id] || 0; });
+    FL.forEach(f => {
+        const c = $('n-' + f.id);
+        if (c)
+            c.textContent = S.items[f.id] || 0;
+        const row = $('row-' + f.id);
+        if (row)
+            row.classList.toggle('border-ac', (S.items[f.id] || 0) > 0);
+    });
     document.querySelectorAll('[data-k]').forEach(x => x.classList.toggle('ring-2', S[x.dataset.k] === x.dataset.v));
     $('wa').href = 'https://wa.me/?text=' + encodeURIComponent('Ada buket untukmu 💐 Buka di sini: ' + link());
 }
@@ -31,11 +37,14 @@ function grp(id, k, opts, mk) { opts.forEach(o => { const b = document.createEle
 function sync() { $('to').value = S.to; $('from').value = S.from; $('msg').value = S.msg; draw(); }
 
 function build() {
+    // Hiasan beranda: tiga foto bunga bertumpuk
+    $('heroIkon').innerHTML = [['p', 64], ['r', 92], ['s', 64]].map(([id, u], i) => `<span class="float inline-flex rounded-full ring-4 ring-white shadow-lg ${i ? '-ml-3' : ''} ${i === 1 ? 'relative z-10' : ''}" style="animation-delay:${i * 0.4}s">${ikon(id, u)}</span>`).join('');
     FL.forEach(f => {
         const r = document.createElement('div');
-        r.className = 'flex items-center gap-2 bg-bg border border-bd rounded-2xl px-3 py-2';
-        r.innerHTML = '<span class="text-3xl"></span><p class="flex-1 font-semibold text-sm"></p><button class="w-10 h-10 sm:w-8 sm:h-8 rounded-full border border-bd" aria-label="Kurangi">−</button><span id="n-' + f.id + '" class="w-5 text-center">0</span><button class="w-10 h-10 sm:w-8 sm:h-8 rounded-full bg-ac text-white" aria-label="Tambah">+</button>';
-        r.children[0].textContent = f.e;
+        r.className = 'flex items-center gap-3 bg-bg border border-bd rounded-2xl px-3 py-2 transition';
+        r.id = 'row-' + f.id;
+        r.innerHTML = '<span class="shrink-0"></span><p class="flex-1 min-w-0 font-semibold text-sm leading-tight"></p><div class="flex items-center gap-1 shrink-0"><button class="w-10 h-10 sm:w-8 sm:h-8 rounded-full border border-bd" aria-label="Kurangi">−</button><span id="n-' + f.id + '" class="w-6 text-center font-semibold">0</span><button class="w-10 h-10 sm:w-8 sm:h-8 rounded-full bg-ac text-white" aria-label="Tambah">+</button></div>';
+        r.children[0].innerHTML = ikon(f.id, 36);
         r.children[1].textContent = f.n;
         const bt = r.querySelectorAll('button');
         const ch = d => { if (d > 0 && tot() >= 15)
@@ -45,13 +54,14 @@ function build() {
         bt[1].onclick = () => ch(1);
         $('flowers').appendChild(r);
         const gc = document.createElement('div');
-        gc.className = 'bg-card/90 border border-bd rounded-3xl p-5 text-center';
-        gc.innerHTML = '<div class="text-5xl"></div><h3 class="font-semibold mt-2"></h3><p class="text-sm text-mut mt-1"></p><p class="text-xs mt-2"></p><button class="mt-3 text-sm text-ac font-semibold">+ Tambah ke buket</button>';
-        gc.children[0].textContent = f.e;
-        gc.children[1].textContent = f.n;
-        gc.children[2].textContent = f.m;
-        gc.children[3].textContent = 'Cocok untuk: ' + f.f;
-        gc.children[4].onclick = () => { ch(1); $('buat').scrollIntoView(); };
+        gc.className = 'bg-card/90 border border-bd rounded-3xl p-4 sm:p-5 flex sm:flex-col items-center gap-4 sm:gap-0 text-left sm:text-center';
+        gc.innerHTML = '<div class="shrink-0"></div><div class="flex-1 sm:w-full flex flex-col"><h3 class="font-semibold sm:mt-3"></h3><p class="text-sm text-mut mt-1"></p><p class="text-xs mt-2"></p><button class="mt-auto pt-3 text-sm text-ac font-semibold text-left sm:text-center">+ Tambah ke buket</button></div>';
+        gc.children[0].innerHTML = ikon(f.id, 64);
+        const isi = gc.children[1];
+        isi.children[0].textContent = f.n;
+        isi.children[1].textContent = f.m;
+        isi.children[2].textContent = 'Cocok untuk: ' + f.f;
+        isi.children[3].onclick = () => { ch(1); $('buat').scrollIntoView(); };
         $('guide').appendChild(gc);
     });
     const pill = 'px-3 py-1 rounded-full border border-bd bg-bg text-sm ring-ac';
@@ -61,10 +71,10 @@ function build() {
     ['to', 'from', 'msg'].forEach(k => $(k).oninput = e => { S[k] = e.target.value; draw(); });
     EX.forEach(x => {
         const c = document.createElement('div');
-        c.className = 'bg-card/90 border border-bd rounded-3xl p-5';
-        const em = Object.keys(x.i).map(k => FL.find(f => f.id === k).e).join(' ');
-        c.innerHTML = '<div class="text-3xl"></div><h3 class="font-semibold mt-2"></h3><p class="script text-xl text-mut mt-1"></p><button class="mt-3 text-sm text-ac font-semibold">Pakai contoh ini →</button>';
-        c.children[0].textContent = em;
+        c.className = 'bg-card/90 border border-bd rounded-3xl p-5 flex flex-col text-left';
+        const em = Object.keys(x.i).map(k => ikon(k, 30)).join(' ');
+        c.innerHTML = '<div class="text-3xl"></div><h3 class="font-semibold mt-2"></h3><p class="script text-xl text-mut mt-1"></p><button class="mt-auto pt-3 text-sm text-ac font-semibold text-left">Pakai contoh ini →</button>';
+        c.children[0].innerHTML = em;
         c.children[1].textContent = x.t;
         c.children[2].textContent = x.m;
         c.children[3].onclick = () => { S = { bg: S.bg, to: S.to, from: S.from, msg: x.m, wrap: x.w, card: x.c, gr: x.g, items: { ...x.i } }; stag = true; sync(); $('buat').scrollIntoView(); };

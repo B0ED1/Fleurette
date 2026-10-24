@@ -6,7 +6,7 @@ Gratis, tanpa akun, tanpa backend, dan tanpa database.
 
 ## Fitur
 
-- **Pembuat buket:** pilih hingga 15 tangkai dari 8 bunga (mawar, peoni, tulip, daisy, bunga matahari, lavender, sakura, teratai).
+- **Pembuat buket:** pilih hingga 15 tangkai dari 11 pilihan (mawar, peoni, tulip, daisy, bunga matahari, lavender, sakura, lili, krisan, gerbera, dan lolipop).
 - **Buket digambar dengan SVG:** kelopak berlapis, tangkai, kertas pembungkus, dan pita. Bunga baru jatuh masuk ke dalam buket.
 - **Kustomisasi:** 4 pilihan daun, 6 warna pembungkus, dan 4 gaya kartu (elegan, vintage, tengah malam, botani).
 - **Kartu ucapan:** nama penerima, nama pengirim, dan pesan hingga 200 karakter.
@@ -23,6 +23,8 @@ Gratis, tanpa akun, tanpa backend, dan tanpa database.
 fleurette/
 ├── index.html        Kerangka halaman
 ├── README.md
+├── images/
+│   └── icons/        Foto ikon bunga (jpg), satu file per bunga. Nama file yang dicoba diatur di FOTO pada js/data.js
 ├── css/
 │   └── style.css     Tema warna, animasi, gaya kartu, latar, tampilan HP
 └── js/
@@ -63,6 +65,12 @@ Beberapa pilihan hosting statis gratis: GitHub Pages, Netlify, dan Vercel.
 | Posisi bunga di dalam buket | `js/flower.js` | array `P` |
 | Teks halaman | `index.html` | bagian terkait |
 | Warna tema dan gaya kartu | `css/style.css` | "Tema warna", "Gaya kartu ucapan", "Pilihan latar halaman" |
+
+## Kredit foto
+
+Ikon bunga di daftar, panduan, dan contoh memakai foto yang dikumpulkan dari Pinterest. Hak cipta foto tetap milik fotografernya masing-masing, dan lisensi pemakaian ulangnya belum diperiksa. Foto mawar bertanda Daniel Taverner. Sebelum situs ini dipakai secara luas atau komersial, sebaiknya foto diganti dengan yang berlisensi bebas (misalnya dari Pexels atau Unsplash) atau minta izin pemiliknya.
+
+Gambar bunga di dalam buket digambar dengan kode (SVG) dan warnanya disesuaikan dengan foto-foto tersebut.
 
 ## Teknologi
 

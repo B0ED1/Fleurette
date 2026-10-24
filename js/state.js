@@ -1,4 +1,6 @@
-let S = { bg: 'pink', to: '', from: '', msg: '', wrap: 'p', card: 'e', gr: 'a', items: {} }, popFor = null, stag = false;
+// State aplikasi dan fungsi bantu (ambil elemen, hitung bunga, buat link).
+
+let S = { bg: 'pink', to: '', from: '', msg: '', wrap: 'p', card: 'e', gr: 'n', items: {} }, popFor = null, stag = false;
 
 const $ = id => document.getElementById(id);
 
